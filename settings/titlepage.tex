@@ -1,0 +1,33 @@
+% =====================================================================
+%  Title page (values are set at the top of main.tex)
+%  Optional logo: put figures/logo.pdf (or .png) and it appears at the top.
+% =====================================================================
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+  \setlength{\parindent}{0pt}
+  \IfFileExists{figures/logo.pdf}{\includegraphics[height=1.4cm]{logo}}{%
+  \IfFileExists{figures/logo.png}{\includegraphics[height=1.4cm]{logo}}{%
+    {\color{accent}\spacedlowsmallcaps{\thesisuniversity}}}}
+  \vspace*{\stretch{1.2}}
+
+  {\sffamily\color{accentred}\spacedallcaps{\thesistype}\enspace{\color{halfgray}|}\enspace\thesiscourse\par}
+  \vspace{1.2em}
+  {\Huge\bfseries \thesistitle\par}
+  \ifx\thesissubtitle\empty\else\vspace{0.6em}{\Large\itshape \thesissubtitle\par}\fi
+  \vspace{2.5em}
+  {\Large \thesisauthor\par}
+
+  \vspace*{\stretch{2}}
+  {\small
+  \begin{tabular}{@{}l@{\hspace{1.2em}}l}
+    {\color{halfgray}\spacedlowsmallcaps{Supervisor}} & \thesissupervisor \\
+    \ifx\thesiscosupervisor\empty\else
+    {\color{halfgray}\spacedlowsmallcaps{Co-supervisor}} & \thesiscosupervisor \\
+    \fi
+  \end{tabular}\par
+  \vspace{1.5em}
+  \thesisdepartment\\
+  \thesisuniversity\\
+  {\color{halfgray}\thesisdate}\par}
+\end{titlepage}
+\hypersetup{pageanchor=true}

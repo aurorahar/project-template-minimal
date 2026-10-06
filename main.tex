@@ -1,0 +1,46 @@
+% =====================================================================
+%  Specialization project template (minimal)
+%  Compile with:  latexmk        (uses .latexmkrc -> pdflatex + biber)
+% =====================================================================
+\documentclass[11pt, a4paper, oneside, openany]{book}
+
+% ---------------------------------------------------------------------
+%  Your details
+% ---------------------------------------------------------------------
+\newcommand{\thesistitle}{Title of the Project}
+\newcommand{\thesissubtitle}{An Optional Subtitle}       % leave empty {} to hide
+\newcommand{\thesisauthor}{Your Name}
+\newcommand{\thesistype}{Specialization Project}
+\newcommand{\thesiscourse}{TTK4550}
+\newcommand{\thesissupervisor}{Supervisor Name}
+\newcommand{\thesiscosupervisor}{Co-supervisor Name}      % leave empty {} to hide
+\newcommand{\thesisdepartment}{Department of Engineering Cybernetics}
+\newcommand{\thesisuniversity}{Norwegian University of Science and Technology}
+\newcommand{\thesisdate}{\monthname~\the\year}
+
+\input{settings/preamble}
+
+\begin{document}
+
+% --- Front matter (unnumbered, roman page numbers) --------------------
+\frontmatter
+\input{settings/titlepage}
+\input{frontmatter/abstract}
+\input{frontmatter/sammendrag}
+\tableofcontents
+
+% --- Main matter (numbered chapters) ----------------------------------
+\mainmatter
+\input{chapters/01-introduction}
+\input{chapters/02-theory}
+\input{chapters/03-method}
+\input{chapters/04-results-discussion}
+\input{chapters/05-conclusion}
+
+\printbibliography[heading=bibintoc, title={References}]
+
+% --- Appendices (A, B, ...) -------------------------------------------
+\appendix
+\input{appendices/A-example}
+
+\end{document}

@@ -1,0 +1,101 @@
+% =====================================================================
+%  Preamble: packages, fonts and design (minimal classicthesis-like style)
+% =====================================================================
+
+% --- Colours -----------------------------------------------------------
+\usepackage[dvipsnames]{xcolor}
+\definecolor{accent}{HTML}{176FC0}      % blue  -- links, title page
+\definecolor{citecolor}{HTML}{008000}   % green -- citations [1]
+\definecolor{accentred}{HTML}{AD2231}         % red   -- chapter numbers, chapters in contents, title page
+\definecolor{halfgray}{gray}{0.55}      % grey  -- headers
+
+% --- Language and fonts -------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[norsk, english]{babel}      % last language is the main one
+\usepackage{amsmath, amsthm}            % load before the math font
+\usepackage[osf]{newpxtext}             % Palatino text, old-style numerals
+\usepackage{newpxmath}                  % Palatino maths
+\renewcommand{\sfdefault}{iwona}        % Iwona for headings
+\usepackage[scale=0.88]{sourcecodepro}  % monospace for code
+\linespread{1.05}
+\usepackage[final]{microtype}
+
+\DeclareRobustCommand{\spacedallcaps}[1]{\textls[160]{\MakeUppercase{#1}}}
+\DeclareRobustCommand{\spacedlowsmallcaps}[1]{\textls[80]{\scshape\MakeLowercase{#1}}}
+
+% --- Page layout -------------------------------------------------------
+\usepackage[a4paper, top=3.2cm, bottom=3.6cm, left=3.5cm, right=3.5cm,
+            headheight=14pt, headsep=0.9cm, footskip=1.4cm, marginparwidth=2.6cm]{geometry}
+\setlength{\parindent}{1em}
+
+% --- Header: "1.1 background | 3" ----------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\enspace #1}}
+\fancyhead[R]{\small{\color{halfgray}\spacedlowsmallcaps{\rightmark}\enspace|}\enspace\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\thepage}\renewcommand{\headrulewidth}{0pt}}
+
+% --- Headings ------------------------------------------------------------
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]
+  {\normalfont\sffamily\fontseries{l}\selectfont\LARGE}
+  {\color{accentred}\thechapter}{1em}{\spacedallcaps}
+\titleformat{name=\chapter, numberless}[hang]
+  {\normalfont\sffamily\fontseries{l}\selectfont\LARGE}{}{0pt}{\spacedallcaps}
+\titlespacing*{\chapter}{0pt}{1cm}{1.2cm}
+\titlespacing*{name=\chapter, numberless}{0pt}{1cm}{1.2cm}
+
+\titleformat{\section}{\normalfont\sffamily\large}{\thesection}{1em}{\spacedallcaps}
+\titleformat{\subsection}{\normalfont\sffamily\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\sffamily\itshape}{\thesubsubsection}{1em}{}
+\titlespacing*{\section}{0pt}{2em}{0.9em}
+\titlespacing*{\subsection}{0pt}{1.6em}{0.6em}
+\titlespacing*{\subsubsection}{0pt}{1.3em}{0.4em}
+
+% --- Table of contents ----------------------------------------------------
+\usepackage{titletoc}
+\setcounter{tocdepth}{1}   % chapters + sections (2 = also subsections)
+\titlecontents{chapter}[1.5em]{\addvspace{0.9em}\color{accentred}}   % chapter lines in red
+  {\contentslabel{1.5em}\spacedlowsmallcaps}{\hspace*{-1.5em}\spacedlowsmallcaps}
+  {\hfill\contentspage}
+\titlecontents{section}[3.8em]{}{\contentslabel{2.3em}}{}
+  {\enspace\titlerule*[0.8em]{\footnotesize.}\enspace\contentspage}
+\titlecontents{subsection}[7em]{}{\contentslabel{3.2em}}{}
+  {\enspace\titlerule*[0.8em]{\footnotesize.}\enspace\contentspage}
+
+% --- Figures, tables, units, code ----------------------------------------
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{caption}
+\captionsetup{font=small, labelfont={sf, bf}, labelsep=colon, justification=centerlast}
+\usepackage{subcaption}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\small, keywordstyle=\color{accent}\bfseries,
+  commentstyle=\color{halfgray}\itshape, stringstyle=\color{BrickRed},
+  numbers=left, numberstyle=\tiny\color{halfgray}, frame=lines,
+  rulecolor=\color{halfgray!60}, breaklines=true, showstringspaces=false}
+\usepackage{enumitem}
+\setlist{itemsep=0.15em, topsep=0.4em}
+
+% --- Misc -----------------------------------------------------------------
+\usepackage{datetime}   % \monthname
+\usepackage{csquotes}
+\usepackage[textsize=scriptsize]{todonotes}   % \todo{...}; [disable] hides them
+
+% --- Bibliography ---------------------------------------------------------
+\usepackage[backend=biber, style=ieee, sorting=none]{biblatex}
+\addbibresource{references.bib}
+\renewcommand*{\bibfont}{\small}
+
+% --- Links (load last) ----------------------------------------------------
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linktoc=page,
+  linkcolor=accent, citecolor=citecolor, urlcolor=accent,   % black for print
+  pdftitle={\thesistitle}, pdfauthor={\thesisauthor}}
+\usepackage[capitalise, noabbrev]{cleveref}
