@@ -7,22 +7,22 @@
   \setlength{\parindent}{0pt}
   \IfFileExists{figures/logo.pdf}{\includegraphics[height=1.4cm]{logo}}{%
   \IfFileExists{figures/logo.png}{\includegraphics[height=1.4cm]{logo}}{%
-    {\color{accent}\spacedlowsmallcaps{\thesisuniversity}}}}
+    \mbox{}}}  % nothing shown without a logo
   \vspace*{\stretch{1.2}}
 
-  {\sffamily\color{accentred}\spacedallcaps{\thesistype}\enspace{\color{halfgray}|}\enspace\thesiscourse\par}
-  \vspace{1.2em}
   {\Huge\bfseries \thesistitle\par}
   \ifx\thesissubtitle\empty\else\vspace{0.6em}{\Large\itshape \thesissubtitle\par}\fi
   \vspace{2.5em}
   {\Large \thesisauthor\par}
+  \vspace{1.2em}
+  {\large \thesistype, \thesiscourse\par}
 
   \vspace*{\stretch{2}}
   {\small
   \begin{tabular}{@{}l@{\hspace{1.2em}}l}
-    {\color{halfgray}\spacedlowsmallcaps{Supervisor}} & \thesissupervisor \\
+    {\color{halfgray}Supervisor:} & \thesissupervisor \\
     \ifx\thesiscosupervisor\empty\else
-    {\color{halfgray}\spacedlowsmallcaps{Co-supervisor}} & \thesiscosupervisor \\
+    {\color{halfgray}Co-supervisor:} & \thesiscosupervisor \\
     \fi
   \end{tabular}\par
   \vspace{1.5em}

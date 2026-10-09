@@ -1,71 +1,62 @@
 % =====================================================================
-%  Preamble: packages, fonts and design (minimal classicthesis-like style)
+%  Preamble: packages, fonts and design
+%
+%  The places you are most likely to change are marked with  >>> EDIT
+%  (search for "EDIT"): colours, font, and your own packages/commands.
 % =====================================================================
 
 % --- Colours -----------------------------------------------------------
+% >>> EDIT: change the HTML codes below to change the colours.
+%     For a printed version, make links and citations black:
+%     \definecolor{accent}{HTML}{000000} and \definecolor{citecolor}{HTML}{000000}
 \usepackage[dvipsnames]{xcolor}
-\definecolor{accent}{HTML}{176FC0}      % blue  -- links, title page
+\definecolor{accent}{HTML}{176FC0}      % blue  -- links
 \definecolor{citecolor}{HTML}{008000}   % green -- citations [1]
-\definecolor{accentred}{HTML}{AD2231}         % red   -- chapter numbers, chapters in contents, title page
-\definecolor{halfgray}{gray}{0.55}      % grey  -- headers
+\definecolor{halfgray}{gray}{0.55}      % grey  -- code comments, title page details
 
 % --- Language and fonts -------------------------------------------------
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[norsk, english]{babel}      % last language is the main one
 \usepackage{amsmath, amsthm}            % load before the math font
-\usepackage[osf]{newpxtext}             % Palatino text, old-style numerals
-\usepackage{newpxmath}                  % Palatino maths
-\renewcommand{\sfdefault}{iwona}        % Iwona for headings
+% >>> EDIT: font. Replace these two lines with one of the alternatives:
+%     Charter:      \usepackage{XCharter}  \usepackage[xcharter]{newtxmath}
+%     Palatino:     \usepackage{newpxtext} \usepackage{newpxmath}
+%     LaTeX default: \usepackage{lmodern}  \usepackage{amssymb}
+\usepackage{libertinus}                 % Libertinus text
+\usepackage{libertinust1math}           % Libertinus maths
 \usepackage[scale=0.88]{sourcecodepro}  % monospace for code
 \linespread{1.05}
 \usepackage[final]{microtype}
 
-\DeclareRobustCommand{\spacedallcaps}[1]{\textls[160]{\MakeUppercase{#1}}}
-\DeclareRobustCommand{\spacedlowsmallcaps}[1]{\textls[80]{\scshape\MakeLowercase{#1}}}
-
 % --- Page layout -------------------------------------------------------
-\usepackage[a4paper, top=3.2cm, bottom=3.6cm, left=3.5cm, right=3.5cm,
-            headheight=14pt, headsep=0.9cm, footskip=1.4cm, marginparwidth=2.6cm]{geometry}
+\usepackage[a4paper, margin=2.5cm, headheight=14pt, marginparwidth=2cm]{geometry}
 \setlength{\parindent}{1em}
 
-% --- Header: "1.1 background | 3" ----------------------------------------
+% --- Header: "1.1 Section title ............ 3" --------------------------
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\enspace #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\enspace #1}}
-\fancyhead[R]{\small{\color{halfgray}\spacedlowsmallcaps{\rightmark}\enspace|}\enspace\thepage}
-\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{\small\nouppercase{\rightmark}}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
 \fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\thepage}\renewcommand{\headrulewidth}{0pt}}
 
 % --- Headings ------------------------------------------------------------
 \usepackage{titlesec}
-\titleformat{\chapter}[hang]
-  {\normalfont\sffamily\fontseries{l}\selectfont\LARGE}
-  {\color{accentred}\thechapter}{1em}{\spacedallcaps}
-\titleformat{name=\chapter, numberless}[hang]
-  {\normalfont\sffamily\fontseries{l}\selectfont\LARGE}{}{0pt}{\spacedallcaps}
-\titlespacing*{\chapter}{0pt}{1cm}{1.2cm}
-\titlespacing*{name=\chapter, numberless}{0pt}{1cm}{1.2cm}
-
-\titleformat{\section}{\normalfont\sffamily\large}{\thesection}{1em}{\spacedallcaps}
-\titleformat{\subsection}{\normalfont\sffamily\bfseries}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\normalfont\sffamily\itshape}{\thesubsubsection}{1em}{}
-\titlespacing*{\section}{0pt}{2em}{0.9em}
-\titlespacing*{\subsection}{0pt}{1.6em}{0.6em}
-\titlespacing*{\subsubsection}{0pt}{1.3em}{0.4em}
+\titleformat{\chapter}[hang]{\normalfont\huge\bfseries}{\thechapter}{0.8em}{}
+\titlespacing*{\chapter}{0pt}{0pt}{1.5em}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{0.8em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{0.8em}{}
+\titlespacing*{\section}{0pt}{1.8em}{0.8em}
+\titlespacing*{\subsection}{0pt}{1.5em}{0.6em}
+\titlespacing*{\subsubsection}{0pt}{1.2em}{0.4em}
 
 % --- Table of contents ----------------------------------------------------
-\usepackage{titletoc}
 \setcounter{tocdepth}{1}   % chapters + sections (2 = also subsections)
-\titlecontents{chapter}[1.5em]{\addvspace{0.9em}\color{accentred}}   % chapter lines in red
-  {\contentslabel{1.5em}\spacedlowsmallcaps}{\hspace*{-1.5em}\spacedlowsmallcaps}
-  {\hfill\contentspage}
-\titlecontents{section}[3.8em]{}{\contentslabel{2.3em}}{}
-  {\enspace\titlerule*[0.8em]{\footnotesize.}\enspace\contentspage}
-\titlecontents{subsection}[7em]{}{\contentslabel{3.2em}}{}
-  {\enspace\titlerule*[0.8em]{\footnotesize.}\enspace\contentspage}
 
 % --- Figures, tables, units, code ----------------------------------------
 \usepackage{graphicx}
@@ -73,7 +64,7 @@
 \usepackage{booktabs}
 \usepackage{siunitx}
 \usepackage{caption}
-\captionsetup{font=small, labelfont={sf, bf}, labelsep=colon, justification=centerlast}
+\captionsetup{font=small, labelfont=bf, labelsep=colon, justification=centerlast}
 \usepackage{subcaption}
 \usepackage{listings}
 \lstset{basicstyle=\ttfamily\small, keywordstyle=\color{accent}\bfseries,
@@ -93,7 +84,16 @@
 \addbibresource{references.bib}
 \renewcommand*{\bibfont}{\small}
 
-% --- Links (load last) ----------------------------------------------------
+% --- Your own packages and commands --------------------------------------
+% >>> EDIT: add your own \usepackage{...} and \newcommand{...} here.
+%     (Keep them above hyperref/cleveref below, which must be loaded last.)
+%     Examples:
+%     \usepackage{tikz}
+%     \usepackage{pgfplots} \pgfplotsset{compat=1.18}
+%     \newcommand{\R}{\mathbb{R}}
+
+
+% --- Links (load last, do not move) ---------------------------------------
 \usepackage{hyperref}
 \hypersetup{colorlinks=true, linktoc=page,
   linkcolor=accent, citecolor=citecolor, urlcolor=accent,   % black for print

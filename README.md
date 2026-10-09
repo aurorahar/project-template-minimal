@@ -18,5 +18,8 @@ Add or remove chapters with the `\input{...}` lines in `main.tex`.
 - `\cref{fig:example}` → "Figure 3.1" (works for tables, equations, chapters).
 - `\todo{...}` for notes; hide all with `\usepackage[disable]{todonotes}`.
 - Need a list of figures? Add `\listoffigures` after `\tableofcontents`.
-- Colours (top of `settings/preamble.tex`): blue links, green citations, red chapter numbers.
-  Set links to black for print.
+- Customising: open `settings/preamble.tex` and search for `EDIT`.
+  - **Colours** (top of the file): blue links, green citations. Set them to black for print.
+  - **Font**: swap the font lines for one of the listed alternatives.
+  - **Your own packages and commands**: add them in the marked section near the end
+    (above `hyperref`, which must stay last).
