@@ -5,7 +5,10 @@
 2. Write in `frontmatter/`, `chapters/` and `appendices/`.
 3. Add references to `references.bib`, cite with `\cite{key}`.
 4. Put images in `figures/`.
-5. Build with `latexmk` (or save in VS Code). Output: `build/main.pdf`.
+5. Compile `main.tex` with **pdflatex**, using **biber** for the references.
+   - Overleaf: upload the folder (or a zip of it); it compiles as is.
+   - VS Code: install a TeX distribution and the LaTeX Workshop extension; it builds on save.
+   - Other editors: if references show as [?], set the bibliography tool to biber.
 
 ## Structure
 Title page → Abstract → Sammendrag → Contents →

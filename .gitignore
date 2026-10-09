@@ -12,3 +12,5 @@ build/
 *.fdb_latexmk
 *.fls
 *.synctex.gz
+*.xdv
+/main.pdf
